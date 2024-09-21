@@ -19,6 +19,16 @@ body {
   margin: auto;
 }
 
+#res_image {
+  height: 224px;
+  width: 224px;
+  border: 1px dotted black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+}
+
 h1 {
   padding: 50px;
 	font-size: 36px;
@@ -44,11 +54,14 @@ h1 {
   gap: 10px;
 }
 
+table, th, td {
+  border: 1px solid black;
+}
+
 </style>
 </head>
-<body id="body">
-
-<main>
+<body>
+<!--  -->
 <div id="subida"></div>
 <h1>
 Random is a cool thing
@@ -58,7 +71,7 @@ Random is a cool thing
 
 <div class="mybox">
 <input type="text" id="input">
-<button id="btn">Use_URL</button>
+<button id="btn">GOOO!</button>
 </div>
 
 <div id="result"></div><br/><br/>
@@ -78,7 +91,14 @@ Random is a cool thing
 -->
 </div>
 
-</main>
+<br/><br/>
+
+<div class="table">
+<img id="img">
+
+<div id="cont"></div>
+</div>
+
 
 <script src="game.js"></script>
 </body>
