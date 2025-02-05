@@ -171,8 +171,10 @@ function mostrar(){
     reader.readAsDataURL(archivo );
     reader.onloadend = function () {
       document.getElementById("img").src = reader.result;
+      console.log(reader.result);
     }
   }
+
 }
 
 document.getElementById("capturar").addEventListener("click", function() {
