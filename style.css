@@ -219,4 +219,6 @@ main {
   cursor: pointer;
 }
 
-
+#name {
+  padding: 5px;
+}
