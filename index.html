@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css"/>
+<title>equisde</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+<h1>McLovin Carnet</h1>
+
+<center>
+
+<b><label for="nombre">Ingresa tu nombre/apodo:</label></b>
+<input type="text" id="name" name="nombre" required placeholder="Ingresa aquí tu nombre/apodo"><br/><br/>
+<b><label for="image">Seleccione una imagen:</label></b>
+<input type="file" id="file" accept="image/*"/><br/><br/>
+
+<button onclick="ext()" id="add">Agregar Datos</button><br/><br/>
+<h2 id="mensaje"></h2>
+</center>
+
+<main id="box">
+<div class="box">
+  <div class="box2">
+    <div class="photo">
+      <img id="img" src="" alt="no image">
+    </div>
+      <div class="barcode">
+        <div class="bar thick"></div>
+        <div class="bar thin"></div>
+        <div class="bar"></div>
+        <div class="bar thick"></div>
+        <div class="bar thin"></div>
+        <div class="bar"></div>
+        <div class="bar thick"></div>
+        <div class="bar thin"></div>
+        <div class="bar"></div>
+        <div class="bar thick"></div>
+        <div class="bar thin"></div>
+        <div class="bar"></div>
+        <div class="bar thick"></div>
+        <div class="bar thin"></div>
+        <div class="bar"></div>
+        <div class="bar thick"></div>
+        <div class="bar thin"></div>
+        <div class="bar"></div>
+        <div class="bar thick"></div>
+        <div class="bar thin"></div>
+        <div class="bar"></div>
+        <div class="bar thick"></div>
+        <div class="bar thin"></div>
+        <div class="bar"></div>
+        <div class="bar thick"></div>
+        <div class="bar thin"></div>
+        <div class="bar"></div>
+        <div class="bar thick"></div>
+        <div class="bar thin"></div>
+    </div>
+    <div class="dat">
+      <span id="nm">name</span>
+      <span>892 MOMONA ST</span>
+      <span>HONOLULU, HI 96820</span>
+    </div>
+  </div>
+
+  <div class="box3">
+    <div class="head">
+      <span class="title">HAWAII</span>
+      <div class="mini-title">
+        <span>DRIVER</span>
+        <span>LICENSE</span>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="number">
+        <span>NUMBER <b>01-47-87441</b></span>
+      </div>
+
+      <div class="dob">
+        <span>DOB <b>06/03/1981</b> EXP <b>06/03/2008</b></span>
+      </div>
+
+      <div class="aea">
+        <div class="xd">
+          <span>HT</span>
+          <span>5-10</span>
+        </div>
+        <div class="xd">
+          <span>WT</span>
+          <span>150</span>
+        </div>
+        <div class="xd">
+          <span>HAIR</span>
+          <span>BRO</span>
+        </div>
+        <div class="xd">
+          <span>EYES</span>
+          <span>BRO</span>
+        </div>
+        <div class="xd">
+          <span>SEX</span>
+          <span>YES</span>
+        </div>
+        <div class="xd">
+          <span>CTY</span>
+          <span>0</span>
+        </div>
+      </div>
+
+      <div class="aea1">
+        <div class="xd1">
+          <span>ISSUE</span>
+          <span>06/18/1998</span>
+        </div>
+        <div class="xd1">
+          <span>DATE</span>
+          <span></span>
+        </div>
+        <div class="xd1">
+          <span>CLASS</span>
+          <span>3</span>
+        </div>
+        <div class="xd1">
+          <span>RESTR</span>
+          <span></span>
+        </div>
+        <div class="xd1">
+          <span>ENDORSE</span>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="firma">
+        <span id="firm">firma</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+</main>
+<center>
+<button id="capturar">Descargar</button>
+<button id="compartir" onclick="copiarContenido()">Compartir Enlace</button>
+</center>
+
+<div id="txt" style="color: black"></div>
+</body>
+
+<script>
+
+function ext() {
+  let name = document.getElementById('name').value;
+  let nm = document.getElementById('nm');
+  let firm = document.getElementById('firm');
+
+  nm.innerHTML = name;
+  firm.innerHTML = name;
+
+  console.log(name);
+  mostrar();
+}
+
+function mostrar(){
+  var archivo = document.getElementById("file").files[0];
+  var reader = new FileReader();
+  if (file) {
+    reader.readAsDataURL(archivo );
+    reader.onloadend = function () {
+      document.getElementById("img").src = reader.result;
+    }
+  }
+}
+
+document.getElementById("capturar").addEventListener("click", function() {
+  let div = document.getElementById("box");
+
+  html2canvas(div).then(canvas => {
+    let imgURL = canvas.toDataURL("image/png");
+    let link = document.createElement("a");
+    link.href = imgURL;
+    link.download = "carnet.png";
+    link.click();
+  });
+});
+
+var link = location.href;
+var texto = document.getElementById('txt').innerHTML = link;
+const copiarContenido = async () => {
+  try {
+    await navigator.clipboard.writeText(texto);
+    const msg = "El enlace ha sido copiado en su portapapeles. Ahora puede compartirlo!!";
+    alert(msg);
+  } catch (err) {
+    console.error('Error al copiar: ', err);
+  }
+}
+</script>
+</html>
