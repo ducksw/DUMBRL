@@ -143,7 +143,7 @@
 </div>
 </main>
 <center>
-<button id="capturar">Descargar</button>
+<button id="capturar" onclick="capture()">Descargar</button>
 <button id="compartir" onclick="copiarContenido()">Compartir Enlace</button>
 </center>
 
@@ -174,10 +174,9 @@ function mostrar(){
       console.log(reader.result);
     }
   }
-
 }
 
-document.getElementById("capturar").addEventListener("click", function() {
+function capture() {
   let div = document.getElementById("box");
 
   html2canvas(div).then(canvas => {
@@ -187,7 +186,7 @@ document.getElementById("capturar").addEventListener("click", function() {
     link.download = "carnet.png";
     link.click();
   });
-});
+}
 
 var link = location.href;
 var texto = document.getElementById('txt').innerHTML = link;

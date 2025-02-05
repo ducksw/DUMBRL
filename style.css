@@ -12,6 +12,7 @@ h1 {
   font-size: 48px;
   font-weight: normal;
   text-align: center;
+  color: aqua;
 }
 .input {
   max-width: 100%;
