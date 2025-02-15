@@ -178,12 +178,13 @@ function mostrar(){
 
 function capture() {
   let div = document.getElementById("box");
+  let name = document.getElementById('name').value;
 
   html2canvas(div).then(canvas => {
     let imgURL = canvas.toDataURL("image/png");
     let link = document.createElement("a");
     link.href = imgURL;
-    link.download = "carnet.png";
+    link.download = `${name}.png`;
     link.click();
   });
 }
