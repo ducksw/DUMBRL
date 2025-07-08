@@ -14,8 +14,12 @@
 <big><big><big>
 <b><label for="nombre">Ingresa tu nombre/apodo:</label></b>
 <input type="text" id="name" name="nombre" required placeholder="Ingresa aquí tu nombre/apodo"><br/><br/>
+<b><label>Ingrese su fecha de nacimiento:</label></b>
+<input type="date" class="date" id="date"><br/><br/>
+
 <b><label for="image">Seleccione una imagen:</label></b>
 <input type="file" id="file" accept="image/*"/><br/><br/>
+
 
 <button onclick="ext()" id="add">Agregar Datos</button><br/><br/>
 
@@ -81,7 +85,7 @@
       </div>
 
       <div class="dob">
-        <span>DOB <b>06/03/1981</b> EXP <b>06/03/2008</b></span>
+        <span>DOB <b id="res-naci"></b> EXP <b>06/03/2050</b></span>
       </div>
 
       <div class="aea">
@@ -152,6 +156,18 @@
 
 <script>
 
+let dateToday = document.getElementById('res-naci');
+const dt = new Date();
+
+let day = dt.getDate().toString().padStart(2, '0');
+let month = (dt.getMonth() + 1).toString().padStart(2, '0');
+let year = dt.getFullYear();
+
+let formattedDate = `${day}/${month}/${year}`;
+
+dateToday.innerHTML = formattedDate;
+console.log(formattedDate);
+
 function ext() {
   let name = document.getElementById('name').value;
   let nm = document.getElementById('nm');
@@ -162,6 +178,7 @@ function ext() {
 
   console.log(name);
   mostrar();
+  nac();
 }
 
 function mostrar(){
@@ -187,6 +204,15 @@ function capture() {
     link.download = `${name}.png`;
     link.click();
   });
+}
+
+function nac() {
+  let dateInput = document.getElementById('date');
+  let output = document.getElementById('res-naci');
+
+  let dt = dateInput.value
+
+  output.innerHTML = dt;
 }
 
 var link = location.href;
